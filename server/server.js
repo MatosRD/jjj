@@ -56,8 +56,8 @@ app.get('/ping',(req,res)=>{
       )
 
 
-app.post("/agregar", async (req, res) => {
-  const result = await db.query('INSERT INTO cliente(nombre) VALUES("angel") ')
+app.post("/agregar", (req, res) => {
+  db.query('INSERT INTO client(nombre) VALUES("angel") ')
 })
 
 app.get("/ver", async (req, res) => {
