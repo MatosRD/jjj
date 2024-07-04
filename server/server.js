@@ -46,7 +46,7 @@ db.connect((err) => {
 
 
 app.get('/pin',(req,res)=>{
-  res.send("host" + DB_HOST + "user" + DB_USER)}
+  res.send("puerto----- " + PORT )}
     )
 
 
