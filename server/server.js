@@ -56,10 +56,15 @@ app.get('/ping',(req,res)=>{
       )
 
 
-app.get("/agregar", async (req, res) => {
+app.post("/agregar", async (req, res) => {
   const result = await db.query('INSERT INTO cliente(nombre) VALUES("angel") ')
+})
+
+app.get("/ver", async (req, res) => {
+  const result = await db.query('SELECT * FROM mon')
   console.log(result)
 })
+
 
 
 app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
