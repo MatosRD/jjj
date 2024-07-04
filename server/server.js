@@ -27,14 +27,14 @@ app.use(
 app.use(cookieParser());
 
 // PORT
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.DB_POST || 3001;
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  port: process.env.DB_POST,
 });
 db.connect((err) => {
   if (err) {
@@ -46,7 +46,7 @@ db.connect((err) => {
 
 
 app.get('/pin',(req,res)=>{
-  res.send("host" + DB_HOS + "user" + DB_USER)}
+  res.send("host" + DB_HOST + "user" + DB_USER)}
     )
 
 
