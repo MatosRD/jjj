@@ -61,15 +61,12 @@ app.post("/agregar", (req, res) => {
 })
 
 app.get("/ver", async (req, res) => {try {
-    const [user] = await db.query("SELECT * FROM mon");
-    if (user) {
-      res.json(user);
-    } else {
-      res.status(404).json({ Error: "User not found" });
-    }
+    try {
+    const users = await  db.query("SELECT * FROM mon");
+    res.json({ users: nn });
   } catch (error) {
-    console.error("Error fetching user:", error);
-    res.status(500).send("Error fetching user");
+    console.error("Error fetching users:", error);
+    res.status(500).send("Error fetching users");
   }
 })
 
