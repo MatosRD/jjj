@@ -13,7 +13,14 @@ const path = require("path");
 
 // Load environment variables from .env file
 
-
+app.use(express.json());
+app.use(
+  cors({
+    origin: [process.env.CLIENT_ORIGIN],
+    methods: ["POST", "GET", "DELETE"],
+    credentials: true,
+  })
+);
 // PORT
 const PORT = process.env.DB_POST || 3001;
 
