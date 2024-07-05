@@ -52,7 +52,7 @@ app.post("/agregar", (req, res) => {
 app.get("/ver", async (req, res) =>  {
     try {
     const users = await  db.query("SELECT * FROM mon");
-    res.send(users);
+    res.send("yaaaaaaaaaaa");
   } catch (error) {
     console.error("Error fetching users:", error);
     res.status(500).send("Error fetching users");
