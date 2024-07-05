@@ -60,7 +60,7 @@ app.post("/agregar", (req, res) => {
   db.query('INSERT INTO client(nombre) VALUES("angel") ')
 })
 
-app.get("/ver", async (req, res) => {try {
+app.get("/ver", async (req, res) =>  {
     try {
     const users = await  db.query("SELECT * FROM mon");
     res.json({ users: nn });
