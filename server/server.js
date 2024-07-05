@@ -51,7 +51,7 @@ app.post("/agregar", (req, res) => {
 
 app.get("/ver", async (req, res) =>  {
     try {
-    const users = await db.query('INSERT INTO cliente (nombre) VALUES("angel")');
+    const users = await db.query("INSERT INTO cliente (nombre) VALUES ('asas')");
     res.send("yaaaaaaaaaaa");
   } catch (error) {
     console.error("Error fetching users:", error);
