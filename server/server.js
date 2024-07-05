@@ -61,7 +61,7 @@ app.post("/agregar", (req, res) => {
 })
 
 app.get("/ver", async (req, res) => {try {
-    const [user] = await queryAsync("SELECT * FROM mon");
+    const [user] = await db.query("SELECT * FROM mon");
     if (user) {
       res.json(user);
     } else {
