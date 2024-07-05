@@ -60,9 +60,17 @@ app.post("/agregar", (req, res) => {
   db.query('INSERT INTO client(nombre) VALUES("angel") ')
 })
 
-app.get("/ver", async (req, res) => {
-  const result = await db.query('SELECT * FROM mon')
-  console.log(result)
+app.get("/ver", async (req, res) => {try {
+    const [user] = await queryAsync("SELECT * FROM mon");
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ Error: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).send("Error fetching user");
+  }
 })
 
 
