@@ -27,14 +27,14 @@ app.use(
 app.use(cookieParser());
 
 // PORT
-const PORT = process.env.DB_POST || 3001;
+const PORT = process.env.PORT || 3001;
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_POST,
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT,
 });
 db.connect((err) => {
   if (err) {
@@ -44,47 +44,9 @@ db.connect((err) => {
   console.log("Connected to MySQL as ID " + db.threadId);
 });
 
-
-app.get('/pin',(req,res)=>{
-  res.send("puerto----- " + PORT )}
-    )
-
-app.get('/login', (req, res) => {
-    const { user, password } = req.query;
-  
-    const mm = `SELECT * FROM login WHERE usuario = ? AND contra = ? `;
-    db.query(mm, [user, password], (err, results) => {
-      if (err) {
-        console.error('Error executing query: ' + err.stack);
-      }else{
-        // res.json(results);
-        res.send(results);
-      }
-     
-    });
-  });
-
-
-
-app.get('/ping',(req,res)=>{
-    res.send(DB_PASSWORD)}
-      )
-
-
-app.post("/agregar", (req, res) => {
-  db.query('INSERT INTO client(nombre) VALUES("angel") ')
+app.get("/agregar", async (req, res) => {
+  const result = await db.query('INSERT INTO client(nombre) VALUES("angel") ')
+  console.log(result)
 })
-
-app.get("/ver", async (req, res) =>  {
-    try {
-     db.query("INSERT INTO cliente (nombre) VALUES ('asas')");
-    res.send("yaaaaaaaaaaa");
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).send("Error fetching users");
-  }
-})
-
-
 
 app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
