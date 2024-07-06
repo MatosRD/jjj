@@ -38,6 +38,21 @@ app.get('/pin',(req,res)=>{
   res.send("puerto----- " + PORT )}
     )
 
+app.get('/login', (req, res) => {
+    const { user, password } = req.query;
+  
+    const mm = `SELECT * FROM login WHERE usuario = ? AND contra = ? `;
+    db.query(mm, [user, password], (err, results) => {
+      if (err) {
+        console.error('Error executing query: ' + err.stack);
+      }else{
+        // res.json(results);
+        res.send(results);
+      }
+     
+    });
+  });
+
 
 
 app.get('/ping',(req,res)=>{
